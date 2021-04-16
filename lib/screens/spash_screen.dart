@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:movie_match_splash_screen/widgets/widgets.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -104,6 +105,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
@@ -112,7 +114,7 @@ class _SplashScreenState extends State<SplashScreen>
             MovieBackground(),
             //ShaderMask
             FadeTransition(
-              opacity: _animbackground,
+              opacity: _animEnd,
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -163,7 +165,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
             ),
-            //Indicator
+            // PageView and Indicator
             Transform.scale(
               scale: _animEnd.value,
               child: Center(
